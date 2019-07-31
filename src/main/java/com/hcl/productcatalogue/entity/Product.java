@@ -30,10 +30,11 @@ public class Product {
 	@Column(name = "price")
 	private Double price;
 	
-	@Column(name = "product_version")
-	private LocalDateTime productVersionUpdatedOn = LocalDateTime.now();
-	
 	@Column(name = "quantity")
 	private Integer quantity;
+	
+	@Column(name = "product_version")
+	private Integer productVersion=0;
+	
 
 }
