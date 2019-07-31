@@ -43,7 +43,7 @@ public class UpdateProductInDBServiceImpl implements UpdateProductInDBService {
 		} else {
 			Product dbProduct = product.get();
 			if (dbProduct.getPrice().doubleValue() != productDTO.getPrice().doubleValue() || !dbProduct.getCategory().equalsIgnoreCase(productDTO.getCategory())
-					|| dbProduct.getQuantity() != productDTO.getQuantity()) {
+					|| !dbProduct.getQuantity().equals(productDTO.getQuantity())) {
 				newProduct.setProductVersion(product.get().getProductVersion() + 1);
 				productRepository.save(setProductDetails(productDTO, newProduct));
 			}
