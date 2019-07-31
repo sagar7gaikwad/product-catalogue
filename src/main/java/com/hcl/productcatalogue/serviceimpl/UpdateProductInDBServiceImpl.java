@@ -41,8 +41,12 @@ public class UpdateProductInDBServiceImpl implements UpdateProductInDBService {
 		if (!product.isPresent()) {
 			productRepository.save(setProductDetails(productDTO, newProduct));
 		} else {
-		newProduct.setProductVersion(product.get().getProductVersion() + 1);
-		productRepository.save(setProductDetails(productDTO, newProduct));
+			Product dbProduct = product.get();
+			if (dbProduct.getPrice().doubleValue() != productDTO.getPrice().doubleValue() || !dbProduct.getCategory().equalsIgnoreCase(productDTO.getCategory())
+					|| dbProduct.getQuantity() != productDTO.getQuantity()) {
+				newProduct.setProductVersion(product.get().getProductVersion() + 1);
+				productRepository.save(setProductDetails(productDTO, newProduct));
+			}
 		}
 		logger.info("exiting updateLatestProductDetailsInDB method of UpdateProductInDBServiceImpl class");
 		return "Product Details updated Successfully";
