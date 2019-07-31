@@ -17,6 +17,12 @@ public class GetProductsController {
 	@Autowired
 	GetProductServiceImpl getProductServiceImpl;
 	
+	/**
+	 * this method returns all the product with latest version 
+	 * in each category.
+	 * @return returns the response object having latst versioin product information of 
+	 * all categories.
+	 */
 	@GetMapping
 	public ResponseEntity<ResponseDTO> getAllProducts() {
 		

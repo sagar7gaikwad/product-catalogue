@@ -18,6 +18,10 @@ public class GetProductServiceImpl implements GetProductService {
 	@Autowired
 	ProductRepository productRepository;
 	
+	/**
+	 * This Method get all the product based on latest version and 
+	 * returns the list of products in the form of response object
+	 */
 	@Override
 	public ResponseDTO getAllProducts() {
 		
