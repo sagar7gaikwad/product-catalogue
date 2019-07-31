@@ -5,8 +5,8 @@ import java.util.List;
 import com.hcl.productcatalogue.dto.ProductDTO;
 import com.hcl.productcatalogue.exception.ApplicationException;
 
-public interface ProductConsumer {
+public interface ProductProducerService {
 	
-	public void receiveMessage(List<ProductDTO> productDTO) throws ApplicationException;
+	public void sendProduct(List<ProductDTO> productList) throws ApplicationException;
 
 }

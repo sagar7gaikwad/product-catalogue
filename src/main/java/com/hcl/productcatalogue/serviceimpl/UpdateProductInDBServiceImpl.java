@@ -37,11 +37,13 @@ public class UpdateProductInDBServiceImpl implements UpdateProductInDBService {
 			throw new ApplicationException("No product received");
 		}
 		Optional<Product> product = productRepository.getLatestProductByProductName(productDTO.getName());
+		Product newProduct = new Product();
 		if (!product.isPresent()) {
-			Product newProduct = new Product();
 			productRepository.save(setProductDetails(productDTO, newProduct));
+		} else {
+		newProduct.setProductVersion(product.get().getProductVersion() + 1);
+		productRepository.save(setProductDetails(productDTO, newProduct));
 		}
-		productRepository.save(setProductDetails(productDTO, product.get()));
 		logger.info("exiting updateLatestProductDetailsInDB method of UpdateProductInDBServiceImpl class");
 		return "Product Details updated Successfully";
 	}
@@ -51,7 +53,7 @@ public class UpdateProductInDBServiceImpl implements UpdateProductInDBService {
 		newProduct.setName(productDTO.getName());
 		newProduct.setPrice(productDTO.getPrice());
 		newProduct.setQuantity(productDTO.getQuantity());
-		newProduct.setProductVersion(newProduct.getProductVersion() + 1);
+		newProduct.setProductVersion(newProduct.getProductVersion());
 		return newProduct;
 	}
 }
