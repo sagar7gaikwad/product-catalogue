@@ -20,7 +20,6 @@ import com.hcl.productcatalogue.service.ProductProducerService;
 @RestController
 @RequestMapping(value = "/product")
 public class ProductController {	
-	//private static final String ERROR_MSG = "Mandetory Element missing : ";
 
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 	

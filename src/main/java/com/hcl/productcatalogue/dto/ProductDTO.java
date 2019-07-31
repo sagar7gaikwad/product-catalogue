@@ -1,5 +1,7 @@
 package com.hcl.productcatalogue.dto;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,8 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDTO {
+public class ProductDTO implements Serializable{
 	
+			/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4828889558640762268L;
+
 			private String name;
 			
 			private String category;
