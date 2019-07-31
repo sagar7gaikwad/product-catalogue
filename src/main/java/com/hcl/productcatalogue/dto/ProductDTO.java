@@ -13,7 +13,6 @@ public class ProductDTO {
 		
 			private Integer quantity;
 			
-			private Integer productVersion;
 
 		}
 		
