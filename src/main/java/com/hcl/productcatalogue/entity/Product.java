@@ -31,8 +31,7 @@ public class Product {
 	private Double price;
 	
 	@Column(name = "product_version")
-	private LocalDateTime productVersion;
-	
+	private LocalDateTime productVersionUpdatedOn = LocalDateTime.now();
 	
 	@Column(name = "quantity")
 	private Integer quantity;
