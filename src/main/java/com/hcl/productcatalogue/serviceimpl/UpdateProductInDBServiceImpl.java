@@ -41,7 +41,7 @@ public class UpdateProductInDBServiceImpl implements UpdateProductInDBService {
 		if (!product.isPresent()) {
 			productRepository.save(setProductDetails(productDTO, newProduct));
 		} else {
-		newProduct.setProductVersion(product.get().getProductVersion());
+		newProduct.setProductVersion(product.get().getProductVersion() + 1);
 		productRepository.save(setProductDetails(productDTO, newProduct));
 		}
 		logger.info("exiting updateLatestProductDetailsInDB method of UpdateProductInDBServiceImpl class");
@@ -53,7 +53,7 @@ public class UpdateProductInDBServiceImpl implements UpdateProductInDBService {
 		newProduct.setName(productDTO.getName());
 		newProduct.setPrice(productDTO.getPrice());
 		newProduct.setQuantity(productDTO.getQuantity());
-		newProduct.setProductVersion(newProduct.getProductVersion() + 1);
+		newProduct.setProductVersion(newProduct.getProductVersion());
 		return newProduct;
 	}
 }
