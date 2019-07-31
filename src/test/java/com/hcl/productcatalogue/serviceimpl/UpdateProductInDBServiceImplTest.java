@@ -38,9 +38,12 @@ public class UpdateProductInDBServiceImplTest {
 	public void testUpdateLatestProductDetailsInDBIfProductIsPresentInDB() throws ApplicationException {
 		Product newProduct = new Product();
 		newProduct.setProductVersion(1);
+		newProduct.setCategory("Electronics");
+		newProduct.setPrice(Double.valueOf(12000.0));
+		newProduct.setQuantity(2);
 		productDTO.setName("Mobile");
 		productDTO.setCategory("Electronics");
-		productDTO.setPrice(12500.0);
+		productDTO.setPrice(Double.valueOf(12500.0));
 		productDTO.setQuantity(2);
 		
 		Optional<Product> product = Optional.of(newProduct);
@@ -54,7 +57,7 @@ public class UpdateProductInDBServiceImplTest {
 		newProduct.setProductVersion(1);
 		productDTO.setName("Mobile");
 		productDTO.setCategory("Electronics");
-		productDTO.setPrice(12500.0);
+		productDTO.setPrice(Double.valueOf(12500.0));
 		productDTO.setQuantity(2);
 		
 		Optional<Product> product = Optional.empty();
@@ -66,5 +69,22 @@ public class UpdateProductInDBServiceImplTest {
 	public void testUpdateLatestProductDetailsInDBIfProductDTOIsNull() throws ApplicationException {
 		
 		assertNull(updateProductInDBServiceImpl.updateLatestProductDetailsInDB(null));
+	}
+	
+	@Test
+	public void testUpdateLatestProductDetailsInDBIfProductIsPresentInDBWithSameDetails() throws ApplicationException {
+		Product newProduct = new Product();
+		newProduct.setProductVersion(1);
+		newProduct.setCategory("Electronics");
+		newProduct.setPrice(Double.valueOf(12500.0));
+		newProduct.setQuantity(2);
+		productDTO.setName("Mobile");
+		productDTO.setCategory("Electronics");
+		productDTO.setPrice(Double.valueOf(12500.0));
+		productDTO.setQuantity(2);
+		
+		Optional<Product> product = Optional.of(newProduct);
+		when(productRepository.getLatestProductByProductName(productDTO.getName())).thenReturn(product);
+		assertEquals("Product Details updated Successfully",updateProductInDBServiceImpl.updateLatestProductDetailsInDB(productDTO));
 	}
 }
