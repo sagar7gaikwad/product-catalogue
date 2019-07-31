@@ -5,5 +5,10 @@ import com.hcl.productcatalogue.exception.ApplicationException;
 
 public interface UpdateProductInDBService {
 
+	/**
+	 * @param productDTO
+	 * @return success message
+	 * @throws ApplicationException
+	 */
 	public String updateLatestProductDetailsInDB(ProductDTO productDTO) throws ApplicationException;
 }
