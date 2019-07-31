@@ -34,7 +34,7 @@ public class ProductProduceServicerImpl implements ProductProducerService {
 		jmsTemplate.convertAndSend("inbound.queue", event);
 		logger.info("Sent update product request data to listener");
 		responseDTO.setHttpStatus(HttpStatus.OK);
-		responseDTO.setMessage("Product List updated successflly");
+		responseDTO.setMessage("Product List updated sucessfully");
 		responseDTO.setData(productList);
 		return responseDTO;
 	}
