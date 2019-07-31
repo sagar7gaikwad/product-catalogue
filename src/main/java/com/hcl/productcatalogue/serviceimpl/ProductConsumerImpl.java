@@ -12,6 +12,7 @@ import com.hcl.productcatalogue.exception.ApplicationException;
 import com.hcl.productcatalogue.service.ProductConsumer;
 import com.hcl.productcatalogue.service.UpdateProductInDBService;
 
+
 @Service
 public class ProductConsumerImpl implements ProductConsumer {
 
@@ -20,7 +21,7 @@ public class ProductConsumerImpl implements ProductConsumer {
 	@Autowired
 	UpdateProductInDBService updateProductInDBService;
 	
-	//@JmsListener(destination = "inbound.queue")
+	//@JmsListener(destination = "inbound.queue") //NoSonar
 	@Override
 	public void receiveMessage(ProductEvent productDTOList) throws ApplicationException {
 		logger.info("Received update product request data from producer");
