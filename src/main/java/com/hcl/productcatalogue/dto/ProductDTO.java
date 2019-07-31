@@ -12,10 +12,10 @@ public class ProductDTO {
 			private String category;
 				
 			private Double price;
-			
-			private LocalDateTime productVersion;
 		
 			private Integer quantity;
+			
+			private Integer productVersion;
 
 		}
 		
