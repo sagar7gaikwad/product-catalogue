@@ -32,7 +32,7 @@ public class Product {
 	private Integer quantity;
 	
 	@Column(name = "product_version")
-	private Integer productVersion=0;
+	private Integer productVersion=1;
 	
 
 }
