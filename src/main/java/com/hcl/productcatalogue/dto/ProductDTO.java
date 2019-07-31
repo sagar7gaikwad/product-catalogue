@@ -1,7 +1,5 @@
 package com.hcl.productcatalogue.dto;
 
-import java.time.LocalDateTime;
-
 import lombok.Data;
 
 @Data
